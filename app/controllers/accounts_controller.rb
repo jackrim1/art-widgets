@@ -6,6 +6,7 @@ class AccountsController < Accounts::BaseController
 
   # GET /accounts
   def index
+    redirect_to root_path unless current_user.admin?
     @pagy, @accounts = pagy(current_user.accounts)
   end
 

@@ -13,4 +13,9 @@ class AccountSystemTest < ApplicationSystemTestCase
     click_button "Update"
     assert_selector "img[src*='avatar.jpg']"
   end
+
+  test "only admins can see accounts and API links" do
+    visit accounts_path
+    refute_text "Accounts"
+  end
 end
