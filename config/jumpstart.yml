@@ -1,0 +1,17 @@
+--- !ruby/object:Jumpstart::Configuration
+application_name: ArtWidgets
+business_name: ''
+business_address: |-
+  Coppers
+  Trotton
+domain: example.com
+default_from_email: Jumpstart <support@example.com>
+support_email: jack.r@hey.com
+background_job_processor: async
+email_provider: ''
+personal_accounts: true
+solargraph: false
+register_with_account: false
+apns: false
+fcm: false
+collect_billing_address: false
