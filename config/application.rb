@@ -8,7 +8,6 @@ Bundler.require(*Rails.groups)
 
 module MyApp
   class Application < Rails::Application
-    config.application_name = "ArtWidgets"
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 7.0
 
