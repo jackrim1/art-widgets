@@ -1,16 +1,8 @@
-<%%= content_for :title, t("shared.scaffold.edit.title", model: "<%= singular_table_name.titleize %>") %>
+<div class="mx-auto sm:w-9/12 md:w-6/12 w-full">
+  <h1 class="font-bold text-4xl">Editing <%= human_name.downcase %></h1>
 
-<div class="container mx-auto px-4 my-8">
-  <div class="flex items-center justify-between mb-4">
-    <h1 class="h3">
-      <%%= link_to "<%= plural_table_name.titleize %>", <%= index_helper %>_path, class: "text-black" %>
-      <span class="text-gray-400 font-light mx-2">\</span>
-      <%%= t("shared.scaffold.edit.title", model: "<%= singular_table_name.titleize %>") %>
-    </h1>
-    <%%= button_to t("delete"), @<%= singular_table_name %>, method: :delete, class: "btn btn-white", form: { data: { turbo_confirm: t("are_you_sure") } } %>
-  </div>
-
-  <div class="p-8 bg-white rounded shadow">
-    <%%= render "form", <%= singular_table_name %>: @<%= singular_table_name %> %>
-  </div>
+  <%%= render "form", <%= singular_table_name %>: @<%= singular_table_name %> %>
+  <hr class="my-8">
+  <%%= link_to "Show this <%= human_name.downcase %>", @<%= singular_table_name %>, class: "btn btn-secondary" %>
+  <%%= link_to "Back to <%= human_name.pluralize.downcase %>", <%= index_helper %>_path, class: "btn btn-secondary" %>
 </div>

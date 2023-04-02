@@ -1,36 +1,29 @@
-<nav class="flex flex-wrap items-center justify-between px-4 py-2 bg-white border-b border-gray-200 text-sm font-medium" data-controller="toggle">
-  <div class="flex items-center flex-shrink-0 mr-6">
-    <%= link_to root_path do %>
-      <%#= render_svg "logo", styles: "fill-current text-gray-700 hover:text-gray-800" %>
-      <div class="text-xl text-gray-800">Art Widgets</div>
-      <span class="sr-only"><%= Jumpstart.config.application_name %></span>
+<nav class="px-8 py-4 flex flex-wrap items-center bg-gray-50 shadow-sm">
+  <div class="text-center text-xl font-semibold mb-0">
+    ArtWidgets
+  </div>
+  <ul class="ml-auto flex space-x-4">
+    <li>
+      <%= link_to "Home",
+                  root_path,
+                  class: "text-gray-600 hover:text-sky-600 font-medium #{current_page?(root_path) ? 'text-sky-600' : nil }"
+      %>
+    </li>
+    <li>
+      <a href="#" class="text-gray-600 hover:text-sky-600 font-medium">About us</a>
+    </li>
+    <li>
+      <a href="#" class="text-gray-600 hover:text-sky-600 font-medium">Blog</a>
+    </li>
+    <li>
+      <a href="#" class="text-gray-600 hover:text-sky-600 font-medium">Contact</a>
+    </li>
+    <% if user_signed_in? %>
+      <li><%= link_to 'Edit profile', edit_user_registration_path, class: "text-gray-600 hover:text-sky-600 font-medium #{current_page?(edit_user_registration_path) ? 'text-sky-600' : nil }" %></li>
+      <%= button_to t(".sign_out"), destroy_user_session_path, method: :delete, class: "text-red-400 hover:text-red-600 font-medium" %>
+    <% else %>
+      <li><%= link_to "Sign up", new_user_registration_path, class: "text-gray-600 hover:text-sky-600 font-medium #{current_page?(new_user_registration_path) ? 'text-sky-600' : nil }" %></li>
+      <li><%= link_to "Login", new_user_session_path, class: "text-gray-600 hover:text-sky-600 font-medium #{current_page?(new_user_session_path) ? 'text-sky-600' : nil }" %></li>
     <% end %>
-  </div>
-
-  <!-- TODO reinstate nav dropdown once ready
-  <div class="block lg:hidden">
-    <button type="button" id="sidebar-open" class="flex items-center p-3 text-gray-500 lg:hidden focus:outline-none focus:text-gray-700" data-action="click->toggle#toggle touch->toggle#toggle">
-      <svg class="w-5 h-5 fill-current" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><title>Menu</title><path d="M0 3h20v2H0V3zm0 6h20v2H0V9zm0 6h20v2H0v-2z"></path></svg>
-    </button>
-  </div>
-  -->
-
-  <div class="flex-grow hidden w-full pb-6 lg:flex lg:w-auto lg:pb-0" data-toggle-target="toggleable">
-    <div class="lg:flex-grow">
-      <%= render "shared/left_nav" %>
-    </div>
-
-    <div>
-      <%= render "shared/right_nav" %>
-      <% if user_signed_in? %>
-        <%= render "shared/signed_in_nav" %>
-
-      <% else %>
-        <%# TODO - reinstate sign-up/log-in once ready %>
-        <%#= link_to t(".log_in"), new_user_session_path, class: 'nav-link' %>
-        <%#= link_to t(".sign_up"), new_user_registration_path, class: 'btn btn-primary' %>
-      <% end %>
-
-    </div>
-  </div>
+  </ul>
 </nav>

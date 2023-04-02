@@ -14,7 +14,7 @@ Devise.setup do |config|
   # confirmation, reset password and unlock tokens in the database.
   # Devise will use the `secret_key_base` as its `secret_key`
   # by default. You can change it below and use your own secret key.
-  # config.secret_key = '144cc4dd84d9f2172c8cd821cd592115e38e07a61026dacc5aeb1320c3e0d748bdf81e280c49f914af00deb605f1c171be02182622d2ef0beec69ad68dc267b9'
+  # config.secret_key = '1742d5fa2291881c3e1a4e6e3e25f48dc4c5c86bb345bcba1c1972c0eeea48c3685cc74cde44114310ae73ac6e9d50b2dc4b4598cccad8b0b30f3a31e8234f4c'
 
   # ==> Controller configuration
   # Configure the parent class to the devise controllers.
@@ -24,19 +24,19 @@ Devise.setup do |config|
   # Configure the e-mail address which will be shown in Devise::Mailer,
   # note that it will be overwritten if you use your own mailer class
   # with default "from" parameter.
-  config.mailer_sender = Jumpstart.config.default_from_email
+  config.mailer_sender = 'please-change-me-at-config-initializers-devise@example.com'
 
   # Configure the class responsible to send e-mails.
   # config.mailer = 'Devise::Mailer'
 
   # Configure the parent class responsible to send e-mails.
-  config.parent_mailer = "ApplicationMailer"
+  # config.parent_mailer = 'ActionMailer::Base'
 
   # ==> ORM configuration
   # Load and configure the ORM. Supports :active_record (default) and
   # :mongoid (bson_ext recommended) by default. Other ORMs may be
   # available as additional gems.
-  require "devise/orm/active_record"
+  require 'devise/orm/active_record'
 
   # ==> Configuration for any authentication mechanism
   # Configure which keys are used when authenticating a user. The default is
@@ -126,13 +126,13 @@ Devise.setup do |config|
   config.stretches = Rails.env.test? ? 1 : 12
 
   # Set up a pepper to generate the hashed password.
-  # config.pepper = 'cf210ab2d2bacc549862e94128a10eeba5fbfd939c2147a9a4b1d615dd41db0f53f75085ad47673f241e3660e4fa4117151e17b5dfe0fe1670c3746f107d3309'
+  # config.pepper = '79b5fe71678c06d82d05b041d432448be52b2b4f414e9de373750f7433d59f69c48f2408bd59038b45a0d625097369532d180fba6b3a9ae84725c156b8478d9e'
 
   # Send a notification to the original email when the user's email is changed.
   # config.send_email_changed_notification = false
 
   # Send a notification email when the user's password is changed.
-  config.send_password_change_notification = true
+  # config.send_password_change_notification = false
 
   # ==> Configuration for :confirmable
   # A period that the user is allowed to access the website even without
@@ -272,21 +272,6 @@ Devise.setup do |config|
   # Add a new OmniAuth provider. Check the wiki for more information on setting
   # up on your models and hooks.
   # config.omniauth :github, 'APP_ID', 'APP_SECRET', scope: 'user,public_repo'
-
-  # Jumpmstart comes with several OmniAuth providers already configured for you
-  # To customize the provider options, add the extra configuration to config/jumpstart.yml
-  # or disable it with Jumpstart and manually add the config.omniauth line for your provider
-  Jumpstart::Omniauth.enabled_providers.each do |provider, args|
-    name = provider.to_s
-    klass = OmniAuth.config.camelizations.fetch(name, name.classify)
-    if Object.const_defined? "OmniAuth::Strategies::#{klass}"
-      config.omniauth provider, args[:public_key], args[:private_key], args[:options]
-    else
-      Rails.logger.warn "Couldn't enable omniauth-#{provider} because the gem isn't loaded."
-    end
-  end
-
-  config.omniauth :developer if Rails.env.test?
 
   # ==> Warden configuration
   # If you want to use other strategies, that are not supported by Devise, or

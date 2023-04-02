@@ -1,44 +1,31 @@
 <!DOCTYPE html>
-<html class="h-full antialiased" lang="<%= I18n.locale %>">
+<html>
   <head>
-    <title>
-      <% if content_for?(:title) %>
-        <%= yield :title %> |
-      <% end %>
-      <%= Jumpstart.config.application_name %>
-    </title>
-
+    <title>Rails + ReactJS + Vite</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-    <%= viewport_meta_tag %>
+    <%= vite_react_refresh_tag %>
+    <%= vite_client_tag %>
+    <%= vite_javascript_tag 'application' %>
+    <!--
+      If using a TypeScript entrypoint file:
+        vite_typescript_tag 'application'
 
-    <%= javascript_include_tag "application", "data-turbo-track": "reload", defer: true %>
-    <%= stylesheet_link_tag "application", media: "all", "data-turbo-track": "reload" %>
+      If using a .jsx or .tsx entrypoint, add the extension:
+        vite_javascript_tag 'application.jsx'
 
-    <%# Be sure to add your own custom favicons %>
-    <%= render "shared/favicons" %>
-    <%= render "shared/payments_dependencies" %>
+      Visit the guide for more information: https://vite-ruby.netlify.app/guide/rails
+    -->
 
-    <%# Replace this with your FontAwesome Pro Kit code %>
-    <script defer src="https://kit.fontawesome.com/0e5ab6a736.js" crossorigin="anonymous"></script>
-
-    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
-
-    <%= yield :head %>
   </head>
 
-  <body class="h-full font-sans antialiased font-normal leading-normal bg-gray-50">
-    <div class="main flex flex-col">
-      <%= render partial: "shared/flash" %>
-      <%= render partial: "shared/navbar" %>
-
-      <div class="px-3 lg:px-0 h-full">
+  <body>
+    <div class="flex flex-col h-screen">
+      <%= render "shared/navbar" %>
+      <main class="container flex-1 mx-auto my-12 px-5 flex flex-col">
         <%= yield %>
-      </div>
+      </main>
     </div>
-
-    <%= render partial: "shared/footer" unless turbo_native_app? %>
-
-    <ninja-keys data-controller="command-palette" hideBreadcrumbs></ninja-keys>
   </body>
 </html>

@@ -1,0 +1,30 @@
+{
+  "entrypoints/application.js": {
+    "css": [
+      "assets/main-5ddcf962.css"
+    ],
+    "file": "assets/application-4f1b9dc0.js",
+    "isEntry": true,
+    "src": "entrypoints/application.js"
+  },
+  "entrypoints/main.scss": {
+    "file": "assets/main-5ddcf962.css",
+    "isEntry": true,
+    "src": "entrypoints/main.scss"
+  },
+  "entrypoints/stylesheets/_buttons.scss": {
+    "file": "assets/_buttons-1e8d5ee3.css",
+    "isEntry": true,
+    "src": "entrypoints/stylesheets/_buttons.scss"
+  },
+  "entrypoints/stylesheets/_form.scss": {
+    "file": "assets/_form-ca393736.css",
+    "isEntry": true,
+    "src": "entrypoints/stylesheets/_form.scss"
+  },
+  "entrypoints/stylesheets/_global.scss": {
+    "file": "assets/_global-0a475aff.css",
+    "isEntry": true,
+    "src": "entrypoints/stylesheets/_global.scss"
+  }
+}
