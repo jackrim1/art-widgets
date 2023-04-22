@@ -3,7 +3,7 @@ import React from 'react';
 export default function Home() {
   return (
     <>
-      <h3 className="text-orange-400 grid h-screen place-items-center">This site is under construction</h3>
+      <h3 className="text-orange-400">This site is under construction</h3>
     </>
   )
 }
